@@ -17,7 +17,7 @@ urlpatterns=[
     url(r'^comment$', views.commentApi),
     url(r'^comment/([0-9]+)$', views.commentApi),
 
-    url(r'^/member/savefile', views.SaveFile)
+    url(r'^member/savefile', views.SaveFile)
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
