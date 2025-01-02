@@ -9,7 +9,7 @@ class MemberSerializer(serializers.ModelSerializer):
 class OfficerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Officers
-        fields = ('id', 'name', 'bio', 'position', 'responsibility')
+        fields = ('id', 'email', 'bio', 'position', 'responsibility')
 
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,6 +19,6 @@ class EventSerializer(serializers.ModelSerializer):
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        fields = ('id', 'content', 'author', 'resume')
+        fields = ('id', 'content', 'email', 'resume')
 
     
