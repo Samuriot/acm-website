@@ -4,7 +4,7 @@ from AcmApp.models import Members, Officers, Events, Comments
 class MemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = Members
-        fields = ('id', 'name', 'email', 'password', 'major', 'graduation_time', 'profile_photo_name', 'resume_file_name')
+        fields = ('id', 'name', 'email', 'password', 'major', 'graduation_time', 'photo', 'resume')
 
 class OfficerSerializer(serializers.ModelSerializer):
     class Meta:
