@@ -1,23 +1,33 @@
 from django.urls import re_path as url
+from django.urls import include
 from AcmApp import views
+from rest_framework.routers import DefaultRouter
 
 from django.conf.urls.static import static
 from django.conf import settings
 
-urlpatterns=[
-    url(r'^member$', views.memberApi),
-    url(r'^member/([0-9]+)$', views.memberApi),
+# Create a router and register our ViewSets with it.
 
-    url(r'^officer$', views.officerApi),
-    url(r'^officer/([0-9]+)$', views.officerApi),
+router = DefaultRouter()
+router.register(r'members', views.MemberViewset, basename='member')
+router.register(r'officers', views.OfficerViewset, basename='officer')
+router.register(r'events', views.EventViewset, basename='event')
+router.register(r'comments', views.CommentViewset, basename='comment')
 
-    url(r'^event$', views.eventApi),
-    url(r'^event/([0-9]+)$', views.eventApi),
 
-    url(r'^comment$', views.commentApi),
-    url(r'^comment/([0-9]+)$', views.commentApi),
 
-    url(r'^member/savefile', views.SaveFile)
-]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
+
+# The API URLs are now determined automatically by the router.
+urlpatterns = [
+    url("api/", include(router.urls)),
+    # url('members/', views.MemberViewset.as_view(), name='member'),
+    # url('officers/', views.OfficerViewset.as_view(), name='officer'),
+    # url('events/', views.EventViewset.as_view(), name='event'),
+    # url('comments/', views.CommentViewset.as_view(), name='comment')
+]
+
+
 
 
