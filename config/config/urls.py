@@ -24,4 +24,4 @@ from django.urls  import re_path as url, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('AcmApp.urls'))
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
