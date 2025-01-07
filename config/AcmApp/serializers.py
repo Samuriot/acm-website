@@ -14,11 +14,11 @@ class OfficerSerializer(serializers.ModelSerializer):
 class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Events
-        fields = ('id', 'name', 'scheduled_date_time', 'host', 'sponsor', 'rsvp')
+        fields = ('id', 'name', 'scheduled_date_time', 'location', 'host', 'sponsor', 'rsvp')
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Comments
-        fields = ('id', 'content', 'email', 'resume')
+        fields = ('id', 'content', 'email', 'recipient')
 
     
