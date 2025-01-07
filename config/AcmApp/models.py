@@ -11,8 +11,8 @@ def upload_to_resume(instance, filename):
 
 class Members(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, unique=True)
+    name = models.CharField(max_length=100)
+    email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=50)
     major = models.CharField(max_length=50, blank=True)
     graduation_time = models.CharField(max_length=10, null=True)
@@ -38,10 +38,11 @@ class Officers(models.Model):
 
 class Events(models.Model):
     id = models.AutoField(primary_key = True)
-    name = models.CharField(max_length= 50)
+    name = models.CharField(max_length= 100)
     scheduled_date_time = models.DateTimeField()
+    location = models.CharField(max_length= 100)
     host = models.ManyToManyField(Members)
-    sponsor = models.CharField(max_length=200, blank=True)
+    sponsor = models.CharField(max_length=100, blank=True)
     rsvp = models.IntegerField(default=0)
 
     def __str__(self):
@@ -53,8 +54,8 @@ class Comments(models.Model):
 
     id = models.AutoField(primary_key = True)
     content = models.TextField()
-    email = models.ForeignKey(Members, on_delete=models.CASCADE, to_field='email', related_name='email_of_comment')
-    resume = models.ForeignKey(Members, on_delete=models.CASCADE, to_field='resume', related_name='comment_on_resume')
+    email = models.ForeignKey(Members, on_delete=models.CASCADE, to_field='email', related_name='comment')
+    recipient = models.ForeignKey(Members, on_delete=models.CASCADE, to_field='id', related_name='commented_by')
 
     def __str__(self):
         email = self.email
