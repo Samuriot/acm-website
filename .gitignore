@@ -1,0 +1,5 @@
+config/AcmApp/__pycache__/
+config/AcmApp/migrations/
+config/config/__pycache__/
+config/media/
+
