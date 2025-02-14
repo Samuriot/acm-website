@@ -12,10 +12,10 @@ def extractingTextFromPDF(pdfFile: str):
             
         return pdfText
 
-def startOpenAI():
+def startGeminiAI(fileName):
     apiKey = open("apiKey", "r").read()
     client = genai.Client(api_key=apiKey)
-    parsedResume = extractingTextFromPDF("jomikaelgruizResume.pdf")
+    parsedResume = extractingTextFromPDF(fileName)
     resumeQuery = []
     resumeQuery.append({"Act as a senior software engineer scouting for both new graduate" +  
                         "and internship positions for your company. Provide feedback on the following " + 
@@ -30,4 +30,6 @@ def startOpenAI():
     print("answer\n", answer)
     
 if __name__ == '__main__':
-    startOpenAI()
+    # must be in pdf format
+    fileName = "testresume.pdf"
+    startGeminiAI(fileName)
